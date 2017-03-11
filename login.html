@@ -465,7 +465,7 @@
                               </div>
                             </div>
 
-                            <div>
+                            <!--<div>
                               <div class="wsite-form-field" style="margin:5px 0px 5px 0px;">
                                 <label class="wsite-form-label" for="input-116140884837665203">Група хворих до котрої ви належите
                                   <span
@@ -478,9 +478,21 @@
                                 <div id="instructions-116140884837665203" class="wsite-form-instructions"
                                 style="display:none;">Оберіть серед вище перечислених груп</div>
                               </div>
-                            </div>
+                            </div>-->
                           </ul>
                         </div>
+
+                        <!-- CHECKBOX -->
+                        <form action="/action_page.php">
+                          <p style="font-size: 17px; color: black; font-family: 'Times New Roman';"><strong>Вкажіть серед перечислених груп ті, про які Ви бажаєте отримувати сповіщення: </strong></p>
+                          <input type="checkbox" name="vehicle" value="Bike" checked> Гіпотонія<br>
+                          <input type="checkbox" name="vehicle" value="Car" checked> Серцево-судинні захворювання<br>
+                          <input type="checkbox" name="vehicle" value="Bike" checked> Астма<br>
+                          <input type="checkbox" name="vehicle" value="Car" checked> Цукровий діабет<br>
+                          <input type="checkbox" name="vehicle" value="Bike" checked> Гіпертонія<br>
+                          <!--<input type="submit" value="Submit">-->
+                        </form>
+
                         <div style="display:none; visibility:hidden;">
                           <input type="text" name="wsite_subject" />
                         </div>
@@ -491,7 +503,7 @@
                           <input type="hidden" name="ucfid" value="505791966190566903" />
                           <input type='submit' style='position:absolute;top:0;left:-9999px;width:1px;height:1px'
                           />
-                          <a class='wsite-button' onclick="document.getElementById('form-505791966190566903').submit()"><span class='wsite-button-inner'>Submit</span>
+                          <a class='wsite-button' onclick="document.getElementById('form-505791966190566903').submit()"><span class='wsite-button-inner'>Відправити</span>
                           </a>
                         </div>
                       </form>
