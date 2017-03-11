@@ -7,7 +7,7 @@ function main() {
         var elmntSec = document.getElementById("custom_window_sec");
         $('#custom_window_sec').slideToggle(500);
         elmntSec.scrollIntoView();
-    })
+    });
     for (var i = 1; i <= 7; i++) {
         $('#Photo' + i).bind('click', function () {
             $('#custom_window').hide();
@@ -19,8 +19,8 @@ function main() {
             elmnt.scrollIntoView();
         });
         $('#Photo' + i).css("cursor", "pointer");
-    }
-   $.getJSON('example.json', function(data) {
+    };
+   $.getJSON('info.json', function(data) {
     console.log(data.new, data.A.B);
 });};
 $(document).ready(main);
