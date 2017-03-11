@@ -1,9 +1,12 @@
 google.charts.load('current', {'packages':['bar']});
 google.charts.setOnLoadCallback(drawChart);
-
+// humidity pressure precipation
+$.getJSON('info.json', function(data) {
+    console.log(data.new, data.A.B);
+});
 function drawChart() {
     var data = google.visualization.arrayToDataTable([
-        ['Date', 'Factor 1', 'Factor 2', 'Factor 3'],
+        ['Date', 'humidity', 'pressure', 'precipation'],
         ['1', 10, 20, 12],
         ['2', 11, 4, 25],
         ['3', 20, 11, 3],
