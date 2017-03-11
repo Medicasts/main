@@ -47,6 +47,18 @@ function drawChart() {
         chart: {
             title: 'Total stats',
             subtitle: 'out of 25'
+        },vAxis: {
+        scaleType: 'log'
+  },
+        axes: {
+            x: {
+                all: {
+                    range: {
+                        max: 31,
+                        min: 1
+                    }
+                }
+            }
         },
         width: 900,
         height: 500
