@@ -317,7 +317,7 @@
 
 <body class="header-page wsite-theme-light  wsite-page-index header-sticky banner-overlay-on ">
 
-  <script src="files/theme/custom-2.js"></script>
+
   <div class="wrapper">
     <div class="edison-header">
       <div class="container">
@@ -427,7 +427,7 @@
                                     <div id="Photo1" class="wsite-image wsite-image-border-none "
                                     style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:inherit">
                                       <a>
-                                        <img src="" alt="Picture" style="width:277;max-width:100%"
+                                        <img src="./" alt="Picture" style="width:277; max-width:100%"
                                         />
                                       </a>
                                       <div style="display:block;font-size:90%"></div>
@@ -436,14 +436,18 @@
 
                                 </td>
                                 <td class="wsite-multicol-col" style="width: 75%;padding:0 15px;">
-  <div style="
+  <div id="day_block" style="
     height: 237px;
     width: 612px;
-    background-color: black;
-">
+    background-color: rgba(149, 225, 225, 0.65);
+    border-radius: 20px;
+    font-size: 30px;
+    text-align: center;
+    padding: 15px;
+"><div id="text1"></div><div id="text2"></div>
   </div>
 
-                                    <h2 class="wsite-content-title" style="text-align:center; width: 612px;">1 &#1088;&#1110;&#1074;&#1077;&#1085;&#1100;<br />&#8203;&#1085;&#1077;&#1073;&#1077;&#1079;&#1087;&#1077;&#1082;&#1080;<br /></h2>
+                                    <h2 id="day_text" class="wsite-content-title" style="text-align:center; width: 612px; margin-top: 15px;">1 &#1088;&#1110;&#1074;&#1077;&#1085;&#1100;<br />&#8203;&#1085;&#1077;&#1073;&#1077;&#1079;&#1087;&#1077;&#1082;&#1080;<br /></h2>
 
                                   <div style="text-align:center; width: 612px;">
                                     <div style="height: 10px; overflow: hidden;"></div>
@@ -584,8 +588,17 @@
 
           </div>
         </div>
-		  <div id="custom_window" style="display: none; background-color: green; height: 250px;
-width: 1069px; margin: 0 auto;"></div>
+
+        <div id="custom_window" style="
+        margin: 0 auto;
+    height: 250px;
+    width: 1069px;
+    background-color: rgba(149, 225, 225, 0.65);
+    border-radius: 20px;
+    font-size: 30px;
+    text-align: center;
+    padding: 15px;
+"><div id="text3"></div><div id="text4"></div>
         <div id="show_graph" style="text-align:center; width: 612px; margin: 0 auto;">
                                     <div style="height: 10px; overflow: hidden;"></div>
                                     <a class="wsite-button wsite-button-small wsite-button-highlight">
@@ -593,8 +606,8 @@ width: 1069px; margin: 0 auto;"></div>
                                     </a>
                                     <div style="height: 0px; overflow: hidden;"></div>
                                   </div>
-        <div id="custom_window_sec" style="display: none; background-color: green; height: 250px;
-width: 1069px; margin: 0 auto;"></div>
+        <div id="custom_window_sec" style="display: none; background-color: green; height: 600px;
+width: 1200px; margin: 0 auto;"><div id="custom_window_three"></div></div>
         <div class="wsite-section-wrap">
           <div class="wsite-section wsite-body-section wsite-background-1">
             <div class="wsite-section-content">
@@ -650,6 +663,10 @@ width: 1069px; margin: 0 auto;"></div>
   <script src="files/theme/jquery.trend.js"></script>
   <script src="files/theme/jquery.revealer.js"></script>
   <script src="files/theme/custom-1.js"></script>
+  <script src="files/theme/custom-2.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!--<script type="text/javascript" src="./charts/history-factors-chart.js"></script>-->
+    <!--<script type="text/javascript" src="./charts/line-chart.js"></script>-->
   <div style='padding: 20px; width:100%; text-align:center;'>CS@UCU</div>
 
 </body>
