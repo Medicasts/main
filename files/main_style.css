@@ -181,7 +181,7 @@ ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fields
  body.banner-overlay-on .wsite-header-section:before { position: absolute; top: 0; left: 0; width: 100%; min-height: 100%; height: inherit; background-color: #ffffff; opacity: 0.2; content: ""; }
  body.banner-overlay-on .wsite-section-content { position: relative; }
  .wsite-section-bg-color:before { display: none; }
- .wsite-form-input-container { margin-bottom: 0; }
+ .wsite-form-input-container { margin-bottom: 0; width: 400px; max-width: 400px;}
  .wsite-form-radio-container { margin-bottom: 0px; font-size: 14px; }
  .wsite-form-radio-container input { margin-right: 10px; }
  .wsite-form-radio-container label { position: relative; top: 2px; }
