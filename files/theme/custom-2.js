@@ -4,8 +4,12 @@ function main() {
     //$('#custom_window').hide();
     for (var i = 1; i <= 7; i++){
     $('#Photo' + i).bind('click', function () {
-        $('#custom_window').hide(700);
+        $('#custom_window').hide();
+        var elmnt = document.getElementById("custom_window");
+
+        //$('#custom_window').scrollIntoView()
         $('#custom_window').slideToggle(500);
+        elmnt.scrollIntoView();
     });
     $('#Photo' + i).css("cursor", "pointer");
     }
