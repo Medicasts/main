@@ -109,24 +109,24 @@ function drawChart() {
     $('#custom_window').css('text-size', 50);
     //$('#custom_window').hide();
     $('#show_graph').bind('click', function () {
-        $.getJSON('info.json', function (data) {
-        $('#text3').text("Група максимального впливу: " + data['2017-03-0' + i][3][0]);
-        $('#text4').text("Основні фактори: " + data['2017-03-0' + i][3][1]);
-        });
+
 
         $('#custom_window_sec').slideToggle(500);
         elmntSec.scrollIntoView();
     });
     for (var i = 1; i <= 7; i++) {
         $('#Photo' + i).bind('click', function () {
-
+            $.getJSON('info.json', function (data) {
+        $('#text3').text("Група максимального впливу: " + data['2017-03-0' + i][3][0]);
+        $('#text4').text("Основні фактори: " + data['2017-03-0' + i][3][1]);
+        });
             $('#custom_window').hide();
             //$('#custom_window_sec').hide();
 
 
             //$('#custom_window').scrollIntoView()
             $('#custom_window').slideToggle(500);
-            elmnt.scrollIntoView({block: "end", behavior: "smooth"});
+            //elmnt.scrollIntoView({block: "end", behavior: "smooth"});
         });
         $('#Photo' + i).css("cursor", "pointer");
     }
