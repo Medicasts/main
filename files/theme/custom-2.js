@@ -1,6 +1,6 @@
 function main() {
-    var changingNew;
-    //start
+    // var changingNew;
+    // start
     google.charts.load("43", {packages: ["corechart", "gauge", "table", "timeline", "bar"]});
     //google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawChart);
@@ -48,15 +48,15 @@ function main() {
             },
             bars: 'vertical',
             vAxis: {format: 'decimal'},
-            height: 400,
-            width: 1000,
+            height: '100%',
+            width: '100%',
             colors: ['#1b9e77', '#d95f02', '#7570b3'],
             allowHtml: true
         };
 
         var chart = new google.charts.Bar(document.getElementById('custom_window_three'));
 
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+        chart.draw(data, options);
 
         /*var btns = document.getElementById('btn-group');
 
@@ -69,10 +69,10 @@ function main() {
          }*/
     }
 
-    $('div#custom_window_three > div').css('margin-left', 'auto');
-    $('div#custom_window_three > div').css('margin-right', 'auto');
+    // $('div#custom_window_three > div').css('margin-left', 'auto');
+    // $('div#custom_window_three > div').css('margin-right', 'auto');
 
-    //end
+    // end
     function calculate_date(zm) {
         var today = new Date();
         var dd = today.getDate() + zm;
@@ -135,8 +135,11 @@ function main() {
             //elmnt.scrollIntoView({block: "end", behavior: "smooth"});
         });
         $('#Photo' + i).css("cursor", "pointer");
-    };
-$('div#custom_window_three > div').css('margin-left', 'auto');
-    $('div#custom_window_three > div').css('margin-right', 'auto');
+    }
+    ;
+    // $('div#custom_window_three > div').css('margin-left', 'auto');
+    // $('div#custom_window_three > div').css('margin-right', 'auto');
+
 };
 $(document).ready(main);
+// $('#custom_window_sec').css('display', 'none');

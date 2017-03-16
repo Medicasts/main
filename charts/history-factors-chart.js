@@ -1,5 +1,6 @@
 google.charts.load('current', {'packages':['bar']});
 google.charts.setOnLoadCallback(drawChart);
+
 function drawChart() {
     var data = google.visualization.arrayToDataTable([
         ['Date', 'humidity', 'pressure', 'precipation'],
@@ -43,22 +44,15 @@ function drawChart() {
         },
         bars: 'vertical',
         vAxis: {format: 'decimal'},
-        height: 400,
-        width: 1000,
-        colors: ['#1b9e77', '#d95f02', '#7570b3']
+        height: '100%',
+        width: '100%',
+        colors: ['#1b9e77', '#d95f02', '#7570b3'],
+        chartArea: {
+            left: '50%'
+        }
     };
 
     var chart = new google.charts.Bar(document.getElementById('custom_window_sec'));
 
-    chart.draw(data, google.charts.Bar.convertOptions(options));
-
-    /*var btns = document.getElementById('btn-group');
-
-    btns.onclick = function (e) {
-
-        if (e.target.tagName === 'BUTTON') {
-            options.vAxis.format = e.target.id === 'none' ? '' : e.target.id;
-            chart.draw(data, google.charts.Bar.convertOptions(options));
-        }
-    }*/
+    chart.draw(data, options);
 }
