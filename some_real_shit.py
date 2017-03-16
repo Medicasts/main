@@ -182,6 +182,6 @@ for i in range(30):
     bigdic[str(today)].append(for_time[3])
     today += timedelta(1)
     day += timedelta(1)
-print(bigdic)
+# print(bigdic)
 with open('info.json', 'w', encoding='utf8') as f:
-    f.write(str(bigdic))
+    f.write(str(bigdic).replace("'", '"'))
