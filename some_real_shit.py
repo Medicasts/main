@@ -166,22 +166,31 @@ def jsonstuff(today, day):
             diseases.append(groups[key])
     return [[par_humidity, par_press, par_precip], out, summ, [reasons, diseases]]
 
-
+kpcc = 0
 cycle = 0
 bigdic = {}
 today = date.today()
 day = date.today()
 day -= timedelta(int(str(day)[8:]) + 1)
-for i in range(30):
+for i in range(50):
+    kpcc += 1
     cycle += 1
-
-    for_time = jsonstuff(str(today)[5:], swap(str(day)[5:]))
+    print(today)
+    try:
+        for_time = jsonstuff(str(today)[5:], swap(str(day)[5:]))
+    except:
+        print('#####', today)
+        break
     bigdic[str(today)] = [for_time[0]]
     bigdic[str(today)].append(for_time[1])
     bigdic[str(today)].append(for_time[2])
     bigdic[str(today)].append(for_time[3])
     today += timedelta(1)
+    # print(today)
+    # print(int(date(today.split[0])), int(date(today.split[1])), int(date(today.split[2])))
     day += timedelta(1)
+    # print(day)
 # print(bigdic)
 with open('info.json', 'w', encoding='utf8') as f:
     f.write(str(bigdic).replace("'", '"'))
+print(kpcc)

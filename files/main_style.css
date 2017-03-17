@@ -433,3 +433,6 @@ div.paragraph ol, div.paragraph ol li { list-style: decimal outside !important; 
 #day_block td:last-child, #custom_window td:last-child {
  border-left: 3px dashed;
 }
+#custom_window svg{
+    width: 1500px;
+}

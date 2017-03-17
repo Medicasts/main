@@ -1,27 +1,63 @@
 function main() {
-
     google.charts.load("43", {packages: ["corechart", "gauge", "table", "timeline", "bar"]});
     google.charts.setOnLoadCallback(drawChart);
-
+    function addingRowsManually(firstDate, amount, content, data) {
+        // console.log(content);
+        var changingList;
+        var changingDate;
+        var firstDateList = firstDate.split('-');
+        // console.log(firstDateList);
+        var customDate = new Date(firstDateList[0], parseInt(firstDateList[1]) - 1, firstDateList[2]);
+        //console.log(customDate);
+        //console.log(customDate.getDate());
+        for (var i = customDate.getDate() - amount; i <= customDate.getDate(); i++){
+            changingDate = new Date(firstDateList[0], parseInt(firstDateList[1]) - 1, i);
+            changingList = [changingDate.getDate().toString()];
+            var changingDateStr = changingDate.getFullYear().toString();
+            if (changingDate.getMonth() <= 8){
+                changingDateStr += '-0' + (changingDate.getMonth() + 1);
+            }
+            else {
+                changingDateStr += '-' + changingDate.getMonth();
+            }
+            if (changingDate.getDate() <= 9){
+                changingDateStr += '-0' + changingDate.getDate();
+            }
+            else {
+                changingDateStr += '-' + changingDate.getDate();
+            }
+            // console.log(changingDateStr);
+            // console.log(changingDateStr);
+            changingList.push.apply(changingList, content[changingDateStr][0]);
+            //console.log(changingDateStr);
+            //console.log(changingList);
+            data.addRow(changingList);
+        }
+    }
+    // console.log(myVariable['2017-04-01']);
     function drawChart() {
         var data = new google.visualization.DataTable;
         data.addColumn('string', 'Date');
         data.addColumn('number', 'вологість');
         data.addColumn('number', 'атмосферний тиск');
         data.addColumn('number', 'опади');
-        for (var i = 8; i <= 30; i++){
-            data.addRow([i.toString(), Math.floor((Math.random() * 10)), Math.floor((Math.random() * 10)), Math.floor((Math.random() * 10))]);
-        }
-
+        //for (var i = 8; i <= 30; i++){
+        //    data.addRow([i.toString(), Math.floor((Math.random() * 10)), Math.floor((Math.random() * 10)), Math.floor((Math.random() * 10))]);
+        //}
+        $.getJSON('info.json', function (datas) {
+          // console.log(datas["2017-04-15"][0]);
+          // data.addRow(["adD", 1, 2, 3]);
+          addingRowsManually("2017-04-15", 28, datas, data);
+        });
         var options = {
             chart: {
-                title: 'Статистика за минулий місяць',
+                title: 'Статистика за останні 28 днів',
                 subtitle: 'фактори: вологість, атмосферний тиск, опади'
             },
             bars: 'vertical',
             vAxis: {format: 'decimal'},
             height: '100%',
-            width: '100%',
+            width: '50%',
             colors: ['#1b9e77', '#d95f02', '#7570b3'],
             allowHtml: true
         };
@@ -34,6 +70,7 @@ function main() {
 
         google.visualization.events.addListener(chart, 'ready', function () {
             container.style.display = 'none';
+            $('#custom_window svg').css('width', '1100px');
             });
 
         chart.draw(data, options);
@@ -94,7 +131,7 @@ function main() {
         var d = new Date(parseInt(splitted_date[0]), parseInt(splitted_date[1]) - 1, parseInt(splitted_date[2]));
         return weekday[d.getDay()];
     }
-    var startPoint = 1;
+    var startPoint = 15;
     var startPointStr;
     if (startPoint < 10) {
         startPointStr = '0' + startPoint;
@@ -144,7 +181,7 @@ function main() {
             $('div#Photo' + (i + 1).toString()).on('click', bindImages(data[a][3]));
         }
         });
-
+    // console.log(new Date(2017, 1, -5));
     var elmntSec = document.getElementById("custom_window_sec");
     $('#show_graph').on('click', function () {
         $('#custom_window_sec').slideToggle(500);
