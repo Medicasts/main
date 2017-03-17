@@ -70,15 +70,41 @@ function main() {
         var d = new Date(parseInt(splitted_date[0]), parseInt(splitted_date[1]) - 1, parseInt(splitted_date[2]));
         return weekday[d.getDay()];
     }
-    var startPoint = 18;
+    var startPoint = 23;
     var window = document.getElementById('custom_window');
-    $.getJSON('info.json', function (data) {
+    $.getJSON('info.json', {}, function (data) {
+    // $.getJSON('https://medicasts.herokuapp.com/data.json', {}, function (data) {
+
         if (startPoint <= 9){$('#text1').text("Основні фактори: " + data['2017-03-0' + startPoint][3][0]);
         $('#text2').text("Група максимального впливу: " + data['2017-03-0' + startPoint][3][1]);
         }
         else{
         $('#text1').text("Основні фактори: " + data['2017-03-' + startPoint][3][0]);
-        $('#text2').text("Група максимального впливу: " + data['2017-03-' + startPoint][3][1]);}
+        $('#text2').text("Група максимального впливу: " + data['2017-03-' + startPoint][3][1]);
+            }
+ /*       var table_text ='<tr><td rowspan="'+ data['2017-03-' + startPoint][3][0].length+  '">Онсновні фактори: </td>';
+
+        for (var i = 0, i < data['2017-03-' + startPoint][3][1].length, i++){
+            if (i == 0) {
+                table_text += '<td>' + data['2017-03-' + startPoint][3][0][i] + '</td></tr>'
+            }
+            else {
+                table_text += '<tr><td>' + data['2017-03-' + startPoint][0][i] + '</td></tr>'
+            }
+        }
+        table_text +='<tr><td rowspan="'+ data['2017-03-' + startPoint][3][1].length + '">Групи ризику: </td>';
+
+        for (var i = 0, i < data['2017-03-' + startPoint][3][1].length, i++){
+            if (i == 0) {
+                table_text += '<td>' + data['2017-03-' + startPoint][3][1][i] + '</td></tr>'
+            }
+            else {
+                table_text += '<tr><td>' + data['2017-03-' + startPoint][3][1][i] + '</td></tr>'
+            }
+        }
+        $('#day_block tbody').append(table_text);
+*/
+
         $('#day_text').text(data['2017-03-' + startPoint][1].toString() + ' тип небезпеки');
         for (var i = 0; i <= 6; i++) {
             if (startPoint + i <= 9) {a = '2017-03-0' + (startPoint + i).toString()}
