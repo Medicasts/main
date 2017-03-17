@@ -424,3 +424,12 @@ div.paragraph ul, div.paragraph ol { padding-left: 3em !important; margin: 5px 0
 div.paragraph li { padding-left: 5px !important; margin: 3px 0 0 !important; }
 div.paragraph ul, div.paragraph ul li { list-style: disc outside !important; }
 div.paragraph ol, div.paragraph ol li { list-style: decimal outside !important; }
+#day_block td, #custom_window td {
+ border-bottom: 3px dashed;
+}
+#day_block tr:last-child td, #custom_window tr:last-child td {
+ border-bottom: 0;
+}
+#day_block td:last-child, #custom_window td:last-child {
+ border-left: 3px dashed;
+}
