@@ -1,9 +1,10 @@
 function main() {
+
     google.charts.load("43", {packages: ["corechart", "gauge", "table", "timeline", "bar"]});
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
-        var data = new google.visualization.DataTable();
+        var data = new google.visualization.DataTable;
         data.addColumn('string', 'Date');
         data.addColumn('number', 'вологість');
         data.addColumn('number', 'атмосферний тиск');
@@ -11,6 +12,7 @@ function main() {
         for (var i = 8; i <= 30; i++){
             data.addRow([i.toString(), Math.floor((Math.random() * 10)), Math.floor((Math.random() * 10)), Math.floor((Math.random() * 10))]);
         }
+
         var options = {
             chart: {
                 title: 'Статистика за минулий місяць',
@@ -23,20 +25,21 @@ function main() {
             colors: ['#1b9e77', '#d95f02', '#7570b3'],
             allowHtml: true
         };
+
         var container = document.getElementById('custom_window_sec');
+
         container.style.display = 'block';
+
         var chart = new google.charts.Bar(document.getElementById('custom_window_three'));
+
         google.visualization.events.addListener(chart, 'ready', function () {
             container.style.display = 'none';
-        });
+            });
+
         chart.draw(data, options);
-        // $("#custom_window_sec").style.display = 'block';
-        // var chart = new google.charts.Bar(document.getElementById('custom_window_three'));
-        // google.visualization.events.addListener(chart, 'ready', function () {
-        //     $("#custom_window_sec").style.display = 'none';
-        //     });
-        // chart.draw(data, options);
     }
+
+
     function calculate_date(zm) {
         var today = new Date();
         var dd = today.getDate() + zm;
@@ -50,35 +53,51 @@ function main() {
         }
         return yyyy + '-' + mm + '-' + dd;
     }
-
-    $('div#Photo' + (1 + 1) + ' > a > img').attr('src', './levels/' + 1.5 + '.png');
-    $.getJSON('info.json', function (data) {
-        console.log(500);
-        var a = 505;
-        $('#text1').text("Група максимального впливу: " + data['2017-03-01'][3][0]);
-        $('#text2').text("Основні фактори: " + data['2017-03-01'][3][1]);
-        $('#day_text').text(data['2017-03-01'][1] + ' тип небезпеки');
-        for (var i = 0; i <= 6; i++) {
-            a = '2017-03-0' + (i + 1);
-            $('div#Photo' + (i + 1) + ' > a > img').attr('src', './levels/' + data[a][1] + '.png');
+    function bindImages(data_spec){
+        return function () {
+               $(window).hide();
+                // console.log(a);
+                // console.log(data[a][3][0]);
+                // console.log(data[a][3][1]);
+                $('#text3').text("Основні фактори: " + data_spec[0]);
+                $('#text4').text("Група максимального впливу: " + data_spec[1]);
+                $(window).slideToggle(500);
         }
-    });
+    }
+    var weekday = ["Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота", "Неділя"];
+    function getDayName(Date_a) {
+        var splitted_date = Date_a.split('-');
+        var d = new Date(parseInt(splitted_date[0]), parseInt(splitted_date[1]) - 1, parseInt(splitted_date[2]));
+        return weekday[d.getDay()];
+    }
+    var startPoint = 18;
+    var window = document.getElementById('custom_window');
+    $.getJSON('info.json', function (data) {
+        if (startPoint <= 9){$('#text1').text("Основні фактори: " + data['2017-03-0' + startPoint][3][0]);
+        $('#text2').text("Група максимального впливу: " + data['2017-03-0' + startPoint][3][1]);
+        }
+        else{
+        $('#text1').text("Основні фактори: " + data['2017-03-' + startPoint][3][0]);
+        $('#text2').text("Група максимального впливу: " + data['2017-03-' + startPoint][3][1]);}
+        $('#day_text').text(data['2017-03-' + startPoint][1].toString() + ' тип небезпеки');
+        for (var i = 0; i <= 6; i++) {
+            if (startPoint + i <= 9) {a = '2017-03-0' + (startPoint + i).toString()}
+            else{
+            a = '2017-03-' + (startPoint + i).toString();
+            // console.log(a);
+            }
+            console.log(getDayName(a));
+            if (i > 0) {
+                $('#Table_Days tr td:nth-child(' + i.toString() + ')').text(getDayName(a));
+            }
+            $('div#Photo' + (i + 1) + ' > a > img').attr('src', './levels/' + data[a][1].toString() + '.png');
+            $('div#Photo' + (i + 1).toString()).bind('click', bindImages(data[a][3]));
+        }
+        });
     var elmntSec = document.getElementById("custom_window_sec");
-    // var elmnt = document.getElementById("custom_window");
     $('#show_graph').bind('click', function () {
         $('#custom_window_sec').slideToggle(500);
         elmntSec.scrollIntoView();
-    });
-    for (var i = 1; i <= 7; i++) {
-        $('#Photo' + i).bind('click', function () {
-            $('#custom_window').hide();
-            $.getJSON('info.json', function (data) {
-                $('#text3').text("Група максимального впливу: " + data['2017-03-0' + i][3][0]);
-                $('#text4').text("Основні фактори: " + data['2017-03-0' + i][3][1]);
-            });
-            $('#custom_window').slideToggle(500);
-            });
-        $('#Photo' + i).css("cursor", "pointer");
-    };
-};
+        });
+}
 $(document).ready(main);
