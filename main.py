@@ -1,12 +1,27 @@
 from flask import Flask, request, send_from_directory
-
+from flask_mail import Message, Mail
 # set the project root directory as the static folder, you can set others.
 app = Flask(__name__, static_folder="static")
-
-
+app.config.update(
+    DEBUG=True,
+    #EMAIL SETTINGS
+    MAIL_SERVER='smtp.gmail.com',
+    MAIL_PORT=465,
+    MAIL_USE_SSL=True,
+    MAIL_USERNAME = 'liepieshov@ucu.edu.ua',
+    MAIL_PASSWORD = ''
+    )
+mail = Mail(app)
+# mail.connect()
 @app.route('/index.html')
 @app.route('/')
 def root():
+    msg = Message("Hello",
+                  sender="liepieshov@ucu.edu.ua",
+                  recipients=["liepieshov@ucu.edu.ua"])
+    msg.body = "HEY BITCH, HOW DO YOU DO=)"
+    mail.send(msg)
+    # return "Hello"
     return app.send_static_file('index.html')
 
 
