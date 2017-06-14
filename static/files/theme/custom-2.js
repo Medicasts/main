@@ -44,7 +44,7 @@ function main() {
         //for (var i = 8; i <= 30; i++){
         //    data.addRow([i.toString(), Math.floor((Math.random() * 10)), Math.floor((Math.random() * 10)), Math.floor((Math.random() * 10))]);
         //}
-        $.getJSON('info.json', function (datas) {
+        $.getJSON('static/info.json', function (datas) {
           // console.log(datas["2017-04-15"][0]);
           // data.addRow(["adD", 1, 2, 3]);
           addingRowsManually("2017-04-15", 28, datas, data);
@@ -140,7 +140,7 @@ function main() {
         startPointStr = startPoint.toString();
     }
     var window = document.getElementById('custom_window');
-    $.getJSON('info.json', {}, function (data) {
+    $.getJSON('static/info.json', {}, function (data) {
         // console.log(data);
     // $.getJSON('https://medicasts.herokuapp.com/data.json', {}, function (data) {
        var table_text = '<tr><td rowspan="'+ data['2017-04-' + startPointStr][3][0].length+  '" style="font-weight: bold;">Основні фактори: </td>';
@@ -177,7 +177,7 @@ function main() {
             if (i > 0) {
                 $('#Table_Days tr td:nth-child(' + i.toString() + ')').text(getDayName(a));
             }
-            $('div#Photo' + (i + 1) + ' > a > img').attr('src', './levels/' + data[a][1].toString() + '.png');
+            $('div#Photo' + (i + 1) + ' > a > img').attr('src', './static/levels/' + data[a][1].toString() + '.png');
             $('div#Photo' + (i + 1).toString()).on('click', bindImages(data[a][3]));
         }
         });
